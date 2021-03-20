@@ -1,0 +1,54 @@
+#people_you_may_know {
+  width: 100%;
+  height: 60vh;
+  background: #d1d1d1;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+#people_you_may_know ::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+.recommendation-header {
+  width: 100%;
+  height: 3rem;
+  background: var(--secondary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  margin-bottom: 5px;
+}
+.recommendation-header .heading {
+  font-size: 16px;
+  font-weight: 900;
+}
+.recommended-users {
+  margin-left: 12px;
+}
+
+.root {
+  width: 100%;
+
+  background: #f1f1f1;
+  margin-bottom: 0.2rem;
+  height: 3rem;
+  border-radius: 5px;
+  padding: 0px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.image_container {
+  width: 30%;
+}
+
+.img-container img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.middle {
+  margin-left: 10px;
+  width: 60%;
+}

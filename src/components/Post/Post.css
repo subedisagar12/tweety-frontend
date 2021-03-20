@@ -1,0 +1,83 @@
+#display_tweets {
+  margin-top: 2rem;
+  font-size: 14px;
+}
+
+.tweet-container {
+  background: var(--grey);
+  margin-bottom: 0.2rem;
+  padding: 5px 1rem;
+
+  border-radius: 10px;
+}
+.info-section {
+  display: flex;
+  align-items: center;
+}
+.profile_pic img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.author-name {
+  margin-left: 5px;
+}
+
+.date-time {
+  font-size: 10px;
+  margin-top: 0.5rem;
+  margin-left: 0.4rem;
+  color: rgb(68, 65, 65);
+}
+
+.tweet-container .name {
+  display: flex;
+  flex-direction: column;
+}
+
+.text-section {
+  text-align: justify;
+}
+.interaction-section {
+  display: flex;
+  justify-content: space-around;
+}
+.like {
+  display: flex;
+}
+.like:hover {
+  cursor: pointer;
+}
+.like .text {
+  margin-left: 5px;
+}
+
+.favorite {
+  color: red;
+}
+
+.comment:hover {
+  cursor: pointer;
+}
+
+/* .comment-section {
+  width: 100%;
+}
+
+.comment-section .form-group {
+  width: 100%;
+} */
+.comment-button {
+  background: var(--theme-color);
+  color: white;
+}
+.comment-button:hover {
+  color: white;
+  background: var(--secondary-color);
+}
+
+.comment-section {
+  max-height: 15rem;
+  overflow-y: scroll;
+}

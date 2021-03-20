@@ -1,0 +1,43 @@
+#home {
+  margin-top: 5rem;
+  font-size: 14px;
+}
+
+#home a:hover {
+  text-decoration: none;
+}
+
+#profile_display {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  border-right: 1px solid var(--theme-color);
+}
+
+.image_section img {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+.user_name {
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.user_name a {
+  color: black;
+}
+.user_name a:hover {
+  text-decoration: none;
+}
+
+textarea {
+  resize: none;
+}
+
+.activities {
+  border-left: 1px solid var(--theme-color);
+}

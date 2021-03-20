@@ -1,0 +1,30 @@
+.comment-display {
+  width: 100%;
+  height: auto;
+  padding: 5px 10px;
+  background: rgb(223, 221, 221);
+  margin-bottom: 0.5rem;
+  border-radius: 10px;
+}
+.comment-heading {
+  display: flex;
+}
+.image-section img {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.comment-heading .info-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.comment-heading .name {
+  font-size: 11px;
+}
+.comment-heading .date {
+  font-size: 9px;
+}
