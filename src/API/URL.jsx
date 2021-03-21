@@ -52,7 +52,7 @@ export const UnFollow = async (to_be_unfollowed, loggedUser, setLoggedUser) => {
     .catch((e) => console.log(e));
 };
 
-const sortByDate = (arr) => {
+export const sortByDate = (arr) => {
   const sorter = (a, b) => {
     return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
   };

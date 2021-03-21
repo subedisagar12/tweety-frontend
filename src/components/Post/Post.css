@@ -71,6 +71,7 @@
 .comment-button {
   background: var(--theme-color);
   color: white;
+  font-size: 13px;
 }
 .comment-button:hover {
   color: white;
@@ -80,4 +81,37 @@
 .comment-section {
   max-height: 15rem;
   overflow-y: scroll;
+}
+
+.comment-section textarea {
+  font-size: 13px;
+}
+
+.setting-button {
+  float: right;
+  margin-right: 10px;
+}
+
+.setting-button:hover {
+  color: black;
+  cursor: pointer;
+}
+
+.option-container {
+  display: inline;
+  width: 100px;
+  float: right;
+}
+
+.hidden-menu:hover {
+  cursor: pointer;
+  background: var(--grey);
+}
+
+.error {
+  margin: 10px 0px;
+}
+
+.word-counter {
+  font-size: 10px;
 }

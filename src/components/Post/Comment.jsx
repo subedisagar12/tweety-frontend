@@ -1,40 +1,46 @@
 import React, { useState, useEffect, useContext } from "react";
 import no_image from "../../images/no_profile.png";
-import axios from "axios";
+
 import "./Comment.css";
-import { URLContext, LoggedInUserContext } from "../../API/URL";
+import { URLContext } from "../../API/URL";
 const Comment = ({ comments }) => {
-  const [author, setAuthor] = useState({});
   const [url] = useContext(URLContext);
-  const [loggedUser] = useContext(LoggedInUserContext);
 
-  const [imageUrl, setImageUrl] = useState(null);
+  const extractDate = (str) => {
+    let date = new Date(str);
+    let year = date.getFullYear();
+    let month = date.getMonth();
+    let day = date.getDate();
+    let hour = date.getHours();
+    let minute = date.getMinutes();
+    let suffix = hour >= 12 ? "PM" : "AM";
 
-  const getAuthor = async (author_id) => {
-    await axios({
-      method: "get",
-      url: `${url}/user/${author_id}`,
-      headers: { "auth-user-id": loggedUser._id },
-    })
-      .then((res) => setAuthor(res.data.data))
-      .then((res) => setImageUrl(res.data.data.profileImage));
+    return (
+      year + "-" + month + "-" + day + " " + hour + ":" + minute + " " + suffix
+    );
   };
 
   return (
     <div className="comment-display-section">
       {comments.map((item, id) => (
         <div className="comment-display" key={id}>
-          {getAuthor(item.commented_by)}
           <div className="comment-heading">
             <div className="image-section">
-              <img src={author.profileImage ? imageUrl : no_image} alt="" />
+              <img
+                src={
+                  item.commented_by.profileImage
+                    ? `${url}/${item.commented_by.profileImage}`
+                    : no_image
+                }
+                alt=""
+              />
             </div>
             <div className="info-section">
               <div className="name">
-                <span>{author.name} comments</span>
+                <span>{item.commented_by.name} comments</span>
               </div>
               <div className="date">
-                <span>{item.created_at}</span>
+                <span>{extractDate(item.created_at)}</span>
               </div>
             </div>
           </div>

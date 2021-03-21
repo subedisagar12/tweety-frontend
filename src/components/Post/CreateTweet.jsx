@@ -1,8 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { URLContext } from "../../API/URL";
+import Alert from "@material-ui/lab/Alert";
 import axios from "axios";
 const CreateTweet = ({ loggedUser }) => {
   const [tweet, setTweet] = useState("");
+  const [words, setWords] = useState(0);
   const [serverReport, setServerReport] = useState({
     data: {},
     error: "",
@@ -10,17 +12,24 @@ const CreateTweet = ({ loggedUser }) => {
   });
 
   const [url] = useContext(URLContext);
-  const BindChange = (e) => {
+  const wordCounter = () => {
+    setWords(tweet.length);
+  };
+
+  const BindChange = async (e) => {
     setTweet(e.target.value);
   };
 
-  const PostTweet = (e) => {
+  useEffect(() => {
+    wordCounter();
+  }, [tweet]);
+  const PostTweet = async (e) => {
     e.preventDefault();
     let temp_tweet = tweet.split(" ").join("");
     if (temp_tweet === "") {
       return;
     }
-    axios({
+    await axios({
       method: "post",
       url: `${url}/post`,
       headers: { "auth-user-id": loggedUser._id },
@@ -33,16 +42,26 @@ const CreateTweet = ({ loggedUser }) => {
           success: res.data.success,
         })
       )
-      .then(setTweet(""))
+
       .catch((e) => setServerReport({ ...serverReport, error: e.message }));
   };
+
+  useEffect(() => {
+    if (serverReport.success !== "") {
+      setTweet("");
+    }
+  }, [serverReport.success]);
   return (
     <section id="create_tweet">
       {serverReport.error !== "" ? (
-        <div className="alert alert-danger">{serverReport.error}</div>
+        <Alert severity="error" className="alert">
+          {serverReport.error}
+        </Alert>
       ) : null}
       {serverReport.success !== "" ? (
-        <div className="alert alert-success">{serverReport.success}</div>
+        <Alert severity="success" className="alert">
+          {serverReport.success}
+        </Alert>
       ) : null}
       <form>
         <textarea
@@ -54,6 +73,9 @@ const CreateTweet = ({ loggedUser }) => {
           className="form-control"
           onChange={(e) => BindChange(e)}
         ></textarea>
+        <div>
+          <span className="word-counter">{words}/500</span>
+        </div>
         <input
           type="submit"
           value="Tweet"
