@@ -33,6 +33,7 @@ const PeopleList = ({ user }) => {
               <a
                 href="#"
                 onClick={() => UnFollow(user._id, loggedUser, setLoggedUser)}
+                className="unfollow"
               >
                 Unfollow
               </a>
@@ -40,6 +41,7 @@ const PeopleList = ({ user }) => {
               <a
                 href="#"
                 onClick={() => Follow(user._id, loggedUser, setLoggedUser)}
+                className="follow"
               >
                 Follow
               </a>

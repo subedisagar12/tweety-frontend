@@ -52,3 +52,11 @@
   margin-left: 10px;
   width: 60%;
 }
+
+.unfollow {
+  color: #df6969;
+}
+
+.unfollow:hover {
+  color: #e92b2b;
+}

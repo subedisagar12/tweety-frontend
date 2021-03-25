@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
+
 import "./Dashboard.css";
 import {
   CreateTweet,
@@ -7,20 +8,12 @@ import {
   PeopleYouMayKnow,
   DisplayTweet,
 } from "../ComponentsImport";
-import { URLContext } from "../../API/URL";
+import { URLContext, PostContext } from "../../API/URL";
 const HomePage = ({ loggedUser }) => {
-  const {
-    name,
-    email,
-    gender,
-    profileImage,
-    followers,
-    following,
-  } = loggedUser;
-
   const [allUser, setAllUser] = useState(null);
 
   let [url] = useContext(URLContext);
+
   useEffect(() => {
     const fetchAllUsers = async () => {
       let users = null;
@@ -41,6 +34,7 @@ const HomePage = ({ loggedUser }) => {
     };
     fetchAllUsers();
   }, [loggedUser]);
+
   return (
     <section id="home" className="row">
       <section className="profile col-md-3">

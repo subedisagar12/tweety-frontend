@@ -11,3 +11,4 @@ export { default as Navbar } from "./Navbar";
 export { default as PeopleYouMayKnow } from "./PeopleYouMayKnow/PeopleYouMayKnow";
 export { default as PeopleList } from "./PeopleYouMayKnow/PeopleList";
 export { default as Comment } from "./Post/Comment";
+export { default as ProfileEdit } from "./Dashboard/ProfileEdit";

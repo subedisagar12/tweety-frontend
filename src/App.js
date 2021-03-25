@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { PostProvider } from "./API/URL";
+
 // Components Import
 import {
   RegisterUser,

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { URLContext } from "../../API/URL";
+import { GetAllPostsOfFollowedPeople, URLContext } from "../../API/URL";
 import Alert from "@material-ui/lab/Alert";
 import axios from "axios";
 const CreateTweet = ({ loggedUser }) => {
@@ -23,6 +23,7 @@ const CreateTweet = ({ loggedUser }) => {
   useEffect(() => {
     wordCounter();
   }, [tweet]);
+
   const PostTweet = async (e) => {
     e.preventDefault();
     let temp_tweet = tweet.split(" ").join("");

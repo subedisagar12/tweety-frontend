@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const URLContext = createContext();
 export const LoggedInUserContext = createContext();
-
+export const PostContext = createContext();
 export const URLProvider = (props) => {
   const url = "http://localhost:5000";
   return (
@@ -84,4 +84,13 @@ export const GetAllPostsOfFollowedPeople = async (user) => {
     sortByDate(filtered_res);
     return filtered_res;
   }
+};
+
+export const PostProvider = (props) => {
+  const [posts, setPosts] = useState([]);
+  return (
+    <PostContext.Provider value={[posts, setPosts]}>
+      {props.children}
+    </PostContext.Provider>
+  );
 };

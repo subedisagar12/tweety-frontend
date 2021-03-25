@@ -3,13 +3,15 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { URLProvider, LoggedInUserProvider } from "./API/URL";
+import { URLProvider, LoggedInUserProvider, PostProvider } from "./API/URL";
 
 ReactDOM.render(
   <React.StrictMode>
     <LoggedInUserProvider>
       <URLProvider>
-        <App />
+        <PostProvider>
+          <App />
+        </PostProvider>
       </URLProvider>
     </LoggedInUserProvider>
   </React.StrictMode>,
