@@ -5,7 +5,7 @@ export const URLContext = createContext();
 export const LoggedInUserContext = createContext();
 export const PostContext = createContext();
 export const URLProvider = (props) => {
-  const url = "http://localhost:5000";
+  const url = "https://tweety-sagar.herokuapp.com";
   return (
     <URLContext.Provider value={[url]}>{props.children}</URLContext.Provider>
   );
@@ -28,7 +28,7 @@ export const Follow = async (to_be_followed, loggedUser, setLoggedUser) => {
 
   axios({
     method: "post",
-    url: `http://localhost:5000/user/follow/${to_be_followed}`,
+    url: `https://tweety-sagar.herokuapp.com//user/follow/${to_be_followed}`,
     headers: { "auth-user-id": loggedUser._id },
   })
     .then((res) => console.log(res))
@@ -45,7 +45,7 @@ export const UnFollow = async (to_be_unfollowed, loggedUser, setLoggedUser) => {
 
   axios({
     method: "post",
-    url: `http://localhost:5000/user/unfollow/${to_be_unfollowed}`,
+    url: `https://tweety-sagar.herokuapp.com//user/unfollow/${to_be_unfollowed}`,
     headers: { "auth-user-id": loggedUser._id },
   })
     .then((res) => console.log(res))
