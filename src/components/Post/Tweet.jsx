@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import no_profile from "../../images/no_profile.png";
 import { URLContext, LoggedInUserContext } from "../../API/URL";
@@ -154,16 +154,15 @@ const Tweet = ({ data }) => {
     let unit = hour >= 12 ? "PM" : "AM";
     return hour + ":" + newdate.getMinutes() + " " + unit;
   };
-
   return (
     <>
       {serverResponse.error !== "" ? (
-        <Alert severity="error" className="error">
+        <Alert severity="error" variant="outlined" className="error">
           {serverResponse.error}
         </Alert>
       ) : null}
       {serverResponse.success !== "" ? (
-        <Alert severity="warning" className="error">
+        <Alert severity="warning" variant="outlined" className="error">
           {serverResponse.success}
         </Alert>
       ) : null}
