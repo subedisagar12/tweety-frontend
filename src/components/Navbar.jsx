@@ -11,7 +11,7 @@ const Navbar = () => {
           <ul className="navbar-nav">
             <li className="nav-item">
               <a href="" className="nav-link">
-                Tweet Tweet
+                Tweet
               </a>
             </li>
           </ul>
