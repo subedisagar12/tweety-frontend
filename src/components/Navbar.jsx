@@ -5,6 +5,7 @@ const Navbar = () => {
   const [loggedUser, setLoggedUser] = useContext(LoggedInUserContext);
   const logout = () => {
     setLoggedUser(null);
+    sessionStorage.clear();
   };
   return (
     <section id="navbar">
