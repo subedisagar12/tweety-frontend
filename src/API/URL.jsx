@@ -28,7 +28,7 @@ export const Follow = async (to_be_followed, loggedUser, setLoggedUser) => {
 
   axios({
     method: "post",
-    url: `https://tweety-sagar.herokuapp.com//user/follow/${to_be_followed}`,
+    url: `https://tweety-sagar.herokuapp.com/user/follow/${to_be_followed}`,
     headers: { "auth-user-id": loggedUser._id },
   })
     .then((res) => console.log(res))
