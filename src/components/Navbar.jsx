@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Navbar.css";
+import { LoggedInUserContext } from "../API/URL";
 const Navbar = () => {
+  const [loggedUser, setLoggedUser] = useContext(LoggedInUserContext);
+  const logout = () => {
+    setLoggedUser(null);
+  };
   return (
     <section id="navbar">
       <nav className="navbar navbar-expand-md primary_nav">
@@ -10,8 +15,8 @@ const Navbar = () => {
           </a>
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a href="" className="nav-link">
-                Tweet
+              <a href="" className="nav-link" onClick={() => logout()}>
+                Logout
               </a>
             </li>
           </ul>
