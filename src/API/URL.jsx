@@ -45,7 +45,7 @@ export const UnFollow = async (to_be_unfollowed, loggedUser, setLoggedUser) => {
 
   axios({
     method: "post",
-    url: `https://tweety-sagar.herokuapp.com//user/unfollow/${to_be_unfollowed}`,
+    url: `https://tweety-sagar.herokuapp.com/user/unfollow/${to_be_unfollowed}`,
     headers: { "auth-user-id": loggedUser._id },
   })
     .then((res) => console.log(res))
@@ -65,7 +65,7 @@ export const GetAllPostsOfFollowedPeople = async (user) => {
     let filtered_res = [];
 
     await axios({
-      url: "http://localhost:5000/post",
+      url: "https://tweety-sagar.herokuapp.com/post",
       method: "get",
       headers: { "auth-user-id": user._id },
     }).then((data) => {
