@@ -70,7 +70,12 @@ const ProfileEdit = ({ changeDisplay, file, setFile }) => {
           {serverResponse.success}
         </Alert>
       ) : null}
-      <form action="" className="form" encType="multipart/form-data">
+      <form
+        action=""
+        className="form"
+        encType="multipart/form-data"
+        name="profileImage"
+      >
         <div className="form-group">
           <label htmlFor="name">Name</label>
           <input
