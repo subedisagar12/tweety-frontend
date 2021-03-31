@@ -30,6 +30,7 @@ const LoginUser = () => {
 
   const LogUser = () => {
     setLoading(true);
+    setServerResults({ ...serverResults, error: "" });
     axios
       .post(`${url}/user/login`, credentials)
 
@@ -46,6 +47,7 @@ const LoginUser = () => {
           setLoggedUser(res.data.data);
         }
       })
+      .then((res) => setLoading(false))
 
       .catch((e) => console.log(e));
     // console.log("Function Called");

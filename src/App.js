@@ -23,7 +23,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Navbar />
+        <Navbar isLoggedIn={isLoggedIn} />
         <Switch>
           <Route path="/" exact>
             {isLoggedIn ? (

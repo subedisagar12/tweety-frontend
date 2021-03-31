@@ -1,4 +1,5 @@
 import React, { useEffect, useContext, useState } from "react";
+import { CircularProgress } from "@material-ui/core";
 import "./Follow.css";
 import {
   getFollowing,
@@ -14,6 +15,7 @@ const Following = () => {
   const [loggedUser] = useContext(LoggedInUserContext);
   const [following, setFollowing] = useState([]);
   const [url] = useContext(URLContext);
+  const [loading, setLoading] = useState(false);
   const [userDetail, setUserDetail] = useState(null);
   useEffect(() => {
     const getAllFollowing = async () => {
@@ -26,6 +28,7 @@ const Following = () => {
   useEffect(async () => {
     const getUserDetails = async () => {
       let result = [];
+      setLoading(true);
       for (let i = 0; i < following.length; i++) {
         let data = await getUser(following[i], loggedUser._id);
         result.push(data);
@@ -34,6 +37,7 @@ const Following = () => {
     };
     let info = await getUserDetails();
     setUserDetail(info);
+    setLoading(false);
   }, [following]);
 
   return (
@@ -41,17 +45,23 @@ const Following = () => {
       <div className="header">
         <h5 className="heading">Your followings</h5>
       </div>
-      <div className="body">
-        {userDetail ? (
-          <div>
-            {userDetail.map((item, id) => (
-              <PeopleList user={item} key={id} />
-            ))}
-          </div>
-        ) : (
-          <h4>You don't follow anyone</h4>
-        )}
-      </div>
+      {loading ? (
+        <div className="loading-section">
+          <CircularProgress />
+        </div>
+      ) : (
+        <div className="body">
+          {userDetail ? (
+            <div>
+              {userDetail.map((item, id) => (
+                <PeopleList user={item} key={id} />
+              ))}
+            </div>
+          ) : (
+            <h4>You don't follow anyone</h4>
+          )}
+        </div>
+      )}
     </section>
   );
 };

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import "./Navbar.css";
 import { LoggedInUserContext } from "../API/URL";
 import { Link, Redirect } from "react-router-dom";
-const Navbar = () => {
+const Navbar = ({ isLoggedIn }) => {
   const [loggedUser, setLoggedUser] = useContext(LoggedInUserContext);
   const logout = () => {
     setLoggedUser(null);
@@ -18,9 +18,11 @@ const Navbar = () => {
           </Link>
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a href="" className="nav-link" onClick={() => logout()}>
-                Logout
-              </a>
+              {isLoggedIn ? (
+                <a href="" className="nav-link" onClick={() => logout()}>
+                  Logout
+                </a>
+              ) : null}
             </li>
           </ul>
         </div>
