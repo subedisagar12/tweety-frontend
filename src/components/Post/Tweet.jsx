@@ -175,7 +175,7 @@ const Tweet = ({ data }) => {
             >
               ...
             </span>
-            {displayEditOptions == true ? (
+            {displayEditOptions === true ? (
               <div className="hidden-options">
                 <ul className="list-group">
                   <li className="list-group-item hidden-menu">Edit</li>

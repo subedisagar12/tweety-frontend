@@ -8,6 +8,8 @@ import {
   LoginUser,
   HomePage,
   Navbar,
+  Followers,
+  Following,
 } from "./components/ComponentsImport";
 import { LoggedInUserContext } from "./API/URL";
 function App() {
@@ -31,9 +33,33 @@ function App() {
             )}
           </Route>
 
+          <Route path="/:user_id/followers" exact>
+            {isLoggedIn ? (
+              <HomePage loggedUser={loggedUser} />
+            ) : (
+              <LoginUser setIsLoggedIn={setIsLoggedIn} />
+            )}
+          </Route>
+
+          <Route path="/:user_id/following" exact>
+            {isLoggedIn ? (
+              <HomePage loggedUser={loggedUser} />
+            ) : (
+              <LoginUser setIsLoggedIn={setIsLoggedIn} />
+            )}
+          </Route>
           {/* Route for user Registration */}
           <Route path="/user/register" exact>
             <RegisterUser />
+          </Route>
+
+          {/* <Route
+            path="/:user_id/followers"
+            exact
+            component={() => <Followers isLoggedIn={isLoggedIn} />}
+          /> */}
+          <Route path="/:user_id/following" exact>
+            <Following />
           </Route>
         </Switch>
       </div>

@@ -3,6 +3,7 @@ import "./Dashboard.css";
 import no_profile from "../../images/no_profile.png";
 import { ProfileEdit } from "../ComponentsImport";
 import { URLContext } from "../../API/URL";
+import { Link } from "react-router-dom";
 
 const ProfileDisplay = ({ loggedUser }) => {
   const [url] = useContext(URLContext);
@@ -37,12 +38,14 @@ const ProfileDisplay = ({ loggedUser }) => {
       <div className="follow_info">
         <div className="followers">
           <span>
-            {loggedUser.followers.length} <a href="#">followers</a>
+            {loggedUser.followers.length}{" "}
+            <Link to={`/${loggedUser._id}/followers`}>followers</Link>
           </span>
         </div>
         <div className="following">
           <span>
-            {loggedUser.following.length} <a href="#">following</a>
+            {loggedUser.following.length}{" "}
+            <Link to={`/${loggedUser._id}/following`}>following</Link>
           </span>
         </div>
       </div>

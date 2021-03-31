@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
-import { GetAllPostsOfFollowedPeople, URLContext } from "../../API/URL";
+import React from "react";
+
 import Alert from "@material-ui/lab/Alert";
-import axios from "axios";
+
 const CreateTweet = ({
   loggedUser,
   tweet,

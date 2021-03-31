@@ -5,7 +5,7 @@ const PeopleYouMayKnow = ({ recommendedUsers, loggedUser }) => {
   return (
     <section id="people_you_may_know">
       <div className="recommendation-header">
-        <h5 className="heading">You may know them</h5>
+        <h5 className="heading">People you may know</h5>
       </div>
       <div className="recommended-users">
         {recommendedUsers

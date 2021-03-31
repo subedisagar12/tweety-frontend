@@ -12,3 +12,6 @@ export { default as PeopleYouMayKnow } from "./PeopleYouMayKnow/PeopleYouMayKnow
 export { default as PeopleList } from "./PeopleYouMayKnow/PeopleList";
 export { default as Comment } from "./Post/Comment";
 export { default as ProfileEdit } from "./Dashboard/ProfileEdit";
+
+export { default as Followers } from "./FollowDetails/Followers";
+export { default as Following } from "./FollowDetails/Following";

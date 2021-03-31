@@ -1,18 +1,16 @@
 import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
-
+import { Switch, Route, Link } from "react-router-dom";
 import "./Dashboard.css";
 import {
   CreateTweet,
   ProfileDisplay,
   PeopleYouMayKnow,
   DisplayTweet,
+  Followers,
+  Following,
 } from "../ComponentsImport";
-import {
-  URLContext,
-  PostContext,
-  GetAllPostsOfFollowedPeople,
-} from "../../API/URL";
+import { URLContext, GetAllPostsOfFollowedPeople } from "../../API/URL";
 const HomePage = ({ loggedUser }) => {
   const [allUser, setAllUser] = useState(null);
 
@@ -107,18 +105,28 @@ const HomePage = ({ loggedUser }) => {
         <ProfileDisplay loggedUser={loggedUser} />
       </section>
       <section className="tweets col-md-6">
-        <CreateTweet
-          loggedUser={loggedUser}
-          tweet={tweet}
-          setTweet={setTweet}
-          words={words}
-          setWords={setWords}
-          wordCounter={wordCounter}
-          BindChange={BindChange}
-          PostTweet={PostTweet}
-          serverReport={serverReport}
-        />
-        <DisplayTweet allTweets={allTweets} />
+        <Switch>
+          <Route path="/" exact>
+            <CreateTweet
+              loggedUser={loggedUser}
+              tweet={tweet}
+              setTweet={setTweet}
+              words={words}
+              setWords={setWords}
+              wordCounter={wordCounter}
+              BindChange={BindChange}
+              PostTweet={PostTweet}
+              serverReport={serverReport}
+            />
+            <DisplayTweet allTweets={allTweets} />
+          </Route>
+          <Route path="/:user_id/followers" exact>
+            <Followers />
+          </Route>
+          <Route path="/:user_id/following" exact>
+            <Following />
+          </Route>
+        </Switch>
       </section>
       <section className="activities col-md-3">
         <div className="recommendation">

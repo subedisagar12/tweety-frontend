@@ -4,8 +4,14 @@ import axios from "axios";
 export const URLContext = createContext();
 export const LoggedInUserContext = createContext();
 export const PostContext = createContext();
+const production = false;
+const URL = production
+  ? "https://tweety-sagar.herokuapp.com"
+  : "http://localhost:5000";
 export const URLProvider = (props) => {
-  const url = "https://tweety-sagar.herokuapp.com";
+  const url = production
+    ? "https://tweety-sagar.herokuapp.com"
+    : "http://localhost:5000";
   return (
     <URLContext.Provider value={[url]}>{props.children}</URLContext.Provider>
   );
@@ -28,7 +34,7 @@ export const Follow = async (to_be_followed, loggedUser, setLoggedUser) => {
 
   axios({
     method: "post",
-    url: `https://tweety-sagar.herokuapp.com/user/follow/${to_be_followed}`,
+    url: `${URL}/user/follow/${to_be_followed}`,
     headers: { "auth-user-id": loggedUser._id },
   })
     .then((res) => console.log(res))
@@ -45,7 +51,7 @@ export const UnFollow = async (to_be_unfollowed, loggedUser, setLoggedUser) => {
 
   axios({
     method: "post",
-    url: `https://tweety-sagar.herokuapp.com/user/unfollow/${to_be_unfollowed}`,
+    url: `${URL}/user/unfollow/${to_be_unfollowed}`,
     headers: { "auth-user-id": loggedUser._id },
   })
     .then((res) => console.log(res))
@@ -65,7 +71,7 @@ export const GetAllPostsOfFollowedPeople = async (user) => {
     let filtered_res = [];
 
     await axios({
-      url: "https://tweety-sagar.herokuapp.com/post",
+      url: `${URL}/post`,
       method: "get",
       headers: { "auth-user-id": user._id },
     }).then((data) => {
@@ -93,4 +99,40 @@ export const PostProvider = (props) => {
       {props.children}
     </PostContext.Provider>
   );
+};
+
+export const getFollowers = async (id, loggedUserId) => {
+  let result = [];
+
+  await axios({
+    method: "get",
+    url: `${URL}/user/${id}/followers`,
+    headers: { "auth-user-id": loggedUserId },
+  }).then((res) => result.push(res.data.data));
+
+  return result[0];
+};
+
+export const getFollowing = async (id, loggedUserId) => {
+  let result = [];
+
+  await axios({
+    method: "get",
+    url: `${URL}/user/${id}/following`,
+    headers: { "auth-user-id": loggedUserId },
+  }).then((res) => result.push(res.data.data));
+
+  return result[0];
+};
+
+export const getUser = async (id, loggedUserId) => {
+  let result = [];
+
+  await axios({
+    method: "get",
+    url: `${URL}/user/${id}`,
+    headers: { "auth-user-id": loggedUserId },
+  }).then((res) => result.push(res.data.data));
+
+  return result[0];
 };
