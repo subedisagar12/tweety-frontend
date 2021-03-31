@@ -31,9 +31,8 @@ const LoginUser = () => {
   const LogUser = () => {
     axios
       .post(`${url}/user/login`, credentials)
-
+      .then(setLoading(true))
       .then((res) => {
-        setLoading(true);
         setServerResults({
           data: res.data.data,
           success: res.data.success,
@@ -45,8 +44,8 @@ const LoginUser = () => {
           sessionStorage.setItem("password", credentials.password);
           setLoggedUser(res.data.data);
         }
-        setLoading(false);
       })
+      .then(setLoading(false))
 
       .catch((e) => console.log(e));
     // console.log("Function Called");
