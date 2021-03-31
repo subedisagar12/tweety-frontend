@@ -2,12 +2,13 @@ import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Alert from "@material-ui/lab/Alert";
-
+import { CircularProgress } from "@material-ui/core";
 import "./User.css";
 // context import
 import { LoggedInUserContext, URLContext } from "../../API/URL";
 const LoginUser = () => {
   const [url] = useContext(URLContext);
+  const [loading, setLoading] = useState(false);
   const [loggedUser, setLoggedUser] = useContext(LoggedInUserContext);
   const [serverResults, setServerResults] = useState({
     data: {},
@@ -30,7 +31,9 @@ const LoginUser = () => {
   const LogUser = () => {
     axios
       .post(`${url}/user/login`, credentials)
+
       .then((res) => {
+        setLoading(true);
         setServerResults({
           data: res.data.data,
           success: res.data.success,
@@ -42,7 +45,9 @@ const LoginUser = () => {
           sessionStorage.setItem("password", credentials.password);
           setLoggedUser(res.data.data);
         }
+        setLoading(false);
       })
+
       .catch((e) => console.log(e));
     // console.log("Function Called");
   };
@@ -97,9 +102,13 @@ const LoginUser = () => {
             </div>
 
             <div className="submit-button">
-              <button className="btn btn-sm" onClick={(e) => LoginUser(e)}>
-                Login
-              </button>
+              {loading ? (
+                <CircularProgress></CircularProgress>
+              ) : (
+                <button className="btn btn-sm" onClick={(e) => LoginUser(e)}>
+                  Login
+                </button>
+              )}
             </div>
             <Link to="/user/register">
               <p className="link text-center mt-1">
