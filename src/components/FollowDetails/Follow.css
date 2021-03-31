@@ -6,7 +6,7 @@
 }
 .followers-section .header {
   width: 100%;
-  background-color: var(--theme-color);
+  background-color: var(--secondary-color);
   padding: 0.5rem;
   color: white;
   display: flex;

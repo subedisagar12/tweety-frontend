@@ -8,7 +8,6 @@ const Navbar = () => {
     setLoggedUser(null);
     sessionStorage.removeItem("email");
     sessionStorage.removeItem("password");
-    return <Redirect to="/"></Redirect>;
   };
   return (
     <section id="navbar">
