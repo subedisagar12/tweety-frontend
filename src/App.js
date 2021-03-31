@@ -25,14 +25,6 @@ function App() {
       <div className="App">
         <Navbar isLoggedIn={isLoggedIn} />
         <Switch>
-          <Route path="/" exact>
-            {isLoggedIn ? (
-              <HomePage loggedUser={loggedUser} />
-            ) : (
-              <LoginUser setIsLoggedIn={setIsLoggedIn} />
-            )}
-          </Route>
-
           <Route path="/:user_id/followers" exact>
             {isLoggedIn ? (
               <HomePage loggedUser={loggedUser} />
@@ -60,6 +52,14 @@ function App() {
           /> */}
           <Route path="/:user_id/following" exact>
             <Following />
+          </Route>
+
+          <Route path="/">
+            {isLoggedIn ? (
+              <HomePage loggedUser={loggedUser} />
+            ) : (
+              <LoginUser setIsLoggedIn={setIsLoggedIn} />
+            )}
           </Route>
         </Switch>
       </div>
