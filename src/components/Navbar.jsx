@@ -1,13 +1,14 @@
 import React, { useContext } from "react";
 import "./Navbar.css";
 import { LoggedInUserContext } from "../API/URL";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 const Navbar = () => {
   const [loggedUser, setLoggedUser] = useContext(LoggedInUserContext);
   const logout = () => {
     setLoggedUser(null);
     sessionStorage.removeItem("email");
     sessionStorage.removeItem("password");
+    return <Redirect to="/"></Redirect>;
   };
   return (
     <section id="navbar">
