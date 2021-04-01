@@ -3,7 +3,7 @@ import PeopleList from "./PeopleList";
 import "./People.css";
 const PeopleYouMayKnow = ({ recommendedUsers, loggedUser }) => {
   return (
-    <section id="people_you_may_know">
+    <div id="people_you_may_know">
       <div className="recommendation-header">
         <h5 className="heading">People you may know</h5>
       </div>
@@ -14,7 +14,7 @@ const PeopleYouMayKnow = ({ recommendedUsers, loggedUser }) => {
             ))
           : null}
       </div>
-    </section>
+    </div>
   );
 };
 

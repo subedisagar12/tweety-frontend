@@ -232,10 +232,10 @@ const Tweet = ({ data }) => {
             <SmsOutlinedIcon />
             <span>Comment ({allComments.length})</span>
           </div>
-          <div className="retweet">
+          {/* <div className="retweet">
             <SendOutlinedIcon />
             <span>Retweet</span>
-          </div>
+          </div> */}
         </div>
         <div className="comment-section" style={style}>
           <form>

@@ -5,6 +5,8 @@
   overflow-y: scroll;
   scrollbar-width: none;
   padding-bottom: 5px;
+  position: -webkit-sticky;
+  position: sticky;
 }
 #people_you_may_know ::-webkit-scrollbar {
   display: none; /* Safari and Chrome */
