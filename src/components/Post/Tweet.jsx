@@ -6,6 +6,7 @@ import Comment from "./Comment";
 import Alert from "@material-ui/lab/Alert";
 import SmsOutlinedIcon from "@material-ui/icons/SmsOutlined";
 import SendOutlinedIcon from "@material-ui/icons/SendOutlined";
+import { Modal } from "@material-ui/core";
 import "./Post.css";
 const Tweet = ({ data }) => {
   const initialState = {};
@@ -17,6 +18,7 @@ const Tweet = ({ data }) => {
   const [comment, setComment] = useState("");
   const [allComments, setAllComments] = useState([]);
   const [displayEditOptions, setDisplayEditOptions] = useState(false);
+
   const [serverResponse, setServerResponse] = useState({
     success: "",
     error: "",
@@ -178,7 +180,8 @@ const Tweet = ({ data }) => {
             {displayEditOptions === true ? (
               <div className="hidden-options">
                 <ul className="list-group">
-                  <li className="list-group-item hidden-menu">Edit</li>
+                  {/* <li className="list-group-item hidden-menu">Edit</li> */}
+
                   <li
                     className="list-group-item hidden-menu"
                     onClick={() => deletePost(data._id)}

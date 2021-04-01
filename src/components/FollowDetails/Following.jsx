@@ -17,6 +17,25 @@ const Following = () => {
   const [url] = useContext(URLContext);
   const [loading, setLoading] = useState(false);
   const [userDetail, setUserDetail] = useState(null);
+  const [filteredUser, setFilteredUser] = useState([]);
+  const [query, setQuery] = useState("");
+
+  useEffect(() => {
+    setFilteredUser(userDetail);
+  }, [userDetail]);
+  const onQueryChange = (e) => {
+    setQuery(e.target.value);
+  };
+  useEffect(() => {
+    if (query === "") {
+      setFilteredUser(userDetail);
+    } else {
+      let results = userDetail.filter((item) =>
+        item.name.toLowerCase().includes(query.toLowerCase())
+      );
+      setFilteredUser(results);
+    }
+  }, [query]);
   useEffect(() => {
     const getAllFollowing = async () => {
       let data = await getFollowing(params.user_id, loggedUser._id);
@@ -51,9 +70,18 @@ const Following = () => {
         </div>
       ) : (
         <div className="body">
-          {userDetail ? (
+          <div className="search-box mb-3">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Search"
+              value={query}
+              onChange={(e) => onQueryChange(e)}
+            />
+          </div>
+          {filteredUser ? (
             <div>
-              {userDetail.map((item, id) => (
+              {filteredUser.map((item, id) => (
                 <PeopleList user={item} key={id} />
               ))}
             </div>
