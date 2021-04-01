@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import noImage from "../../images/no_profile.png";
+import { Link } from "react-router-dom";
 import "./People.css";
 import {
   URLContext,
@@ -25,7 +26,9 @@ const PeopleList = ({ user }) => {
             />
           </div>
           <div className="middle info-container">
-            <span>{user.name}</span>
+            <Link to={`/user/${user._id}`} className="username">
+              <span>{user.name}</span>
+            </Link>
           </div>
 
           <div className="right follow-container">

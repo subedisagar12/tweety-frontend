@@ -15,3 +15,7 @@ export { default as ProfileEdit } from "./Dashboard/ProfileEdit";
 
 export { default as Followers } from "./FollowDetails/Followers";
 export { default as Following } from "./FollowDetails/Following";
+
+// User Dashboard imports
+
+export { default as UserDashboard } from "./Dashboard/UserDetails/UserDashboard";

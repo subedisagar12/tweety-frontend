@@ -94,7 +94,11 @@ const HomePage = ({ loggedUser }) => {
       let filtered_user = await users.filter(
         (item) => item._id !== loggedUser._id
       );
-      setAllUser(filtered_user);
+      let unfollowedUser = await filtered_user.filter(
+        (item) => !loggedUser.following.includes(item._id)
+      );
+      // setAllUser(filtered_user);
+      setAllUser(unfollowedUser);
     };
     fetchAllUsers();
   }, [loggedUser]);

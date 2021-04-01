@@ -13,6 +13,7 @@ import {
   Navbar,
   Followers,
   Following,
+  UserDashboard,
 } from "./components/ComponentsImport";
 import { LoggedInUserContext } from "./API/URL";
 function App() {
@@ -54,8 +55,9 @@ function App() {
             exact
             component={() => <Followers isLoggedIn={isLoggedIn} />}
           /> */}
-          <Route path="/:user_id/following" exact>
-            <Following />
+
+          <Route path="/user/:user_id">
+            <UserDashboard isLoggedIn={isLoggedIn} />
           </Route>
 
           <Route path="/">

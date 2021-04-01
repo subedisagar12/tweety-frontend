@@ -43,6 +43,10 @@
   align-items: center;
   justify-content: center;
 }
+
+.root .username {
+  color: black;
+}
 .image_container {
   width: 30%;
 }
