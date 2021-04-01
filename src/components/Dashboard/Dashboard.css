@@ -19,6 +19,7 @@
   padding: 10px;
   position: -webkit-sticky;
   position: sticky;
+  top: 0;
 }
 
 .image_section img {
