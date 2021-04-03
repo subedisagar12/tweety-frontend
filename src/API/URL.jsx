@@ -140,7 +140,6 @@ export const getUser = async (id, loggedUserId) => {
 export const getAllPostOfUser = async (user, loggedUserId) => {
   let result = [];
   if (user && loggedUserId) {
-    console.log(user);
     await axios({
       method: "get",
       url: `${URL}/post/posts/${user}`,
@@ -150,4 +149,15 @@ export const getAllPostOfUser = async (user, loggedUserId) => {
     sortByDate(result[0]);
     return result[0];
   }
+};
+
+export const getMutualFollowers = async (loggedUserId, userId) => {
+  let result = [];
+  await axios({
+    method: "get",
+    url: `${URL}/user/mutualfollower/${loggedUserId}/${userId}`,
+    headers: { "auth-user-id": loggedUserId },
+  }).then((res) => result.push(res.data.data));
+
+  return result[0];
 };

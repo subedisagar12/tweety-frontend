@@ -203,7 +203,11 @@ const Tweet = ({ data }) => {
           </div>
           <div className="name">
             <div className="author-name">
-              <Link to={`/user/${author._id}`}> {author.name}</Link>
+              {author._id !== loggedUser._id ? (
+                <Link to={`/user/${author._id}`}> {author.name}</Link>
+              ) : (
+                <Link to="/"> {author.name}</Link>
+              )}
             </div>
             <div className="date-time">
               {getDate(data.created_at)} {getTime(data.created_at)}

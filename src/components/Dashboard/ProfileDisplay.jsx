@@ -34,6 +34,7 @@ const ProfileDisplay = ({ loggedUser }) => {
             <a href="#">{loggedUser.name}</a>
           </h5>
         </div>
+        <hr />
       </div>
       <div className="follow_info">
         <div className="followers">

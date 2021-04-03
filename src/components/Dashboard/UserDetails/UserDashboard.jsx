@@ -6,14 +6,19 @@ import {
   URLContext,
   LoggedInUserContext,
   getAllPostOfUser,
+  getMutualFollowers,
+  getUser,
 } from "../../../API/URL";
 import UserProfile from "./UserProfile";
 import UserPost from "./UserPost";
+import { PeopleYouMayKnow } from "../../ComponentsImport";
 const UserDashboard = () => {
   let history = useHistory();
   let params = useParams();
   const [user, setUser] = useState(null);
   const [userPost, setUserPost] = useState(null);
+  const [mutualFollowersID, setMutualFollowersID] = useState(null);
+  const [mutualFollowers, setMutualFollowers] = useState(null);
   const [url] = useContext(URLContext);
   const [loggedUser] = useContext(LoggedInUserContext);
   const getUserInfo = () => {
@@ -32,12 +37,10 @@ const UserDashboard = () => {
 
   useEffect(() => {
     getUserInfo();
-  }, [loggedUser]);
+  }, [loggedUser, params.user_id]);
 
   useEffect(() => {
     const getData = async () => {
-      console.log(params.user_id);
-      console.log(loggedUser._id);
       let data = await getAllPostOfUser(params.user_id, loggedUser._id);
       setUserPost(data);
     };
@@ -46,7 +49,38 @@ const UserDashboard = () => {
     } else {
       return null;
     }
-  }, [loggedUser]);
+  }, [loggedUser, params.user_id]);
+
+  useEffect(() => {
+    const getFollowers = async () => {
+      let data = await getMutualFollowers(loggedUser._id, params.user_id);
+
+      setMutualFollowersID(data);
+    };
+    if (loggedUser) {
+      getFollowers();
+    }
+  }, [loggedUser, params.user_id]);
+
+  useEffect(() => {
+    const getAUser = async () => {
+      let result = [];
+      for (let i = 0; i < mutualFollowersID.length; i++) {
+        let data = await getUser(mutualFollowersID[i], loggedUser._id);
+        result.push(data);
+      }
+      return result;
+    };
+
+    const call = async () => {
+      if (loggedUser && mutualFollowersID) {
+        let res = await getAUser();
+        setMutualFollowers(res);
+      }
+    };
+    call();
+  }, [mutualFollowersID]);
+
   return (
     <section id="user-dashboard">
       <div className="row">
@@ -58,6 +92,10 @@ const UserDashboard = () => {
         </div>
         <div className="col-md-3 user-info">
           {/* Mutual Follower section goes here */}
+          <PeopleYouMayKnow
+            header="Mutual Follower"
+            recommendedUsers={mutualFollowers}
+          />
         </div>
       </div>
     </section>

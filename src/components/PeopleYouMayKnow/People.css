@@ -73,3 +73,11 @@
 .unfollow:hover {
   color: #e92b2b;
 }
+
+.progress {
+  width: 100%;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

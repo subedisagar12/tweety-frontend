@@ -25,3 +25,7 @@
 .follow-info {
   color: var(--theme-color);
 }
+
+.root {
+  font-size: 14px;
+}

@@ -21,6 +21,7 @@ const UserProfile = ({ user }) => {
               <a href="#">{user.name}</a>
             </h5>
           </div>
+          <hr />
         </div>
         <div className="follow_info">
           <div className="followers">

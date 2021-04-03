@@ -137,6 +137,7 @@ const HomePage = ({ loggedUser }) => {
           <PeopleYouMayKnow
             recommendedUsers={allUser}
             loggedUser={loggedUser}
+            header="People you may know"
           />
         </div>
       </section>
