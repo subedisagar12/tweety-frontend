@@ -4,7 +4,7 @@ import axios from "axios";
 export const URLContext = createContext();
 export const LoggedInUserContext = createContext();
 export const PostContext = createContext();
-const production = false;
+const production = true;
 const URL = production
   ? "https://tweety-sagar.herokuapp.com"
   : "http://localhost:5000";
