@@ -88,6 +88,7 @@ const CreateTweet = ({
           type="submit"
           value="Tweet"
           name="tweet"
+          className="tweet-btn"
           onClick={(e) => PostTweet(e)}
         />
       </form>

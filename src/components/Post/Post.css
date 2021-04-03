@@ -1,5 +1,5 @@
 #display_tweets {
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
   font-size: 14px;
 }
 
@@ -22,6 +22,10 @@
 
 .author-name {
   margin-left: 5px;
+}
+
+.author-name a {
+  color: black;
 }
 
 .date-time {
@@ -114,4 +118,8 @@
 
 .word-counter {
   font-size: 10px;
+}
+
+.tweet-btn {
+  margin-bottom: 1rem;
 }

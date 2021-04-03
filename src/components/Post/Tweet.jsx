@@ -6,7 +6,7 @@ import Comment from "./Comment";
 import Alert from "@material-ui/lab/Alert";
 import SmsOutlinedIcon from "@material-ui/icons/SmsOutlined";
 import SendOutlinedIcon from "@material-ui/icons/SendOutlined";
-import { Modal } from "@material-ui/core";
+import { Link } from "react-router-dom";
 import "./Post.css";
 const Tweet = ({ data }) => {
   const initialState = {};
@@ -202,7 +202,9 @@ const Tweet = ({ data }) => {
             />
           </div>
           <div className="name">
-            <div className="author-name">{author.name}</div>
+            <div className="author-name">
+              <Link to={`/user/${author._id}`}> {author.name}</Link>
+            </div>
             <div className="date-time">
               {getDate(data.created_at)} {getTime(data.created_at)}
             </div>

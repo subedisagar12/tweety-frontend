@@ -47,6 +47,10 @@
 .root .username {
   color: black;
 }
+
+.root .username :hover {
+  text-decoration: none;
+}
 .image_container {
   width: 30%;
 }

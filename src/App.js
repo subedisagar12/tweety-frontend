@@ -56,8 +56,8 @@ function App() {
             component={() => <Followers isLoggedIn={isLoggedIn} />}
           /> */}
 
-          <Route path="/user/:user_id">
-            <UserDashboard isLoggedIn={isLoggedIn} />
+          <Route path="/user/:user_id" exact>
+            <UserDashboard />
           </Route>
 
           <Route path="/">
