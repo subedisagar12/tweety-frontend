@@ -15,7 +15,7 @@ const PeopleYouMayKnow = ({ recommendedUsers, loggedUser, header }) => {
   }, [recommendedUsers]);
 
   return (
-    <div id="people_you_may_know">
+    <div className="people_you_may_know">
       <div className="recommendation-header">
         <h5 className="heading">{header}</h5>
       </div>

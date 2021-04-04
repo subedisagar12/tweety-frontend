@@ -1,4 +1,4 @@
-#people_you_may_know {
+.people_you_may_know {
   width: 100%;
   max-height: 60vh;
   background: #d1d1d1;
@@ -8,8 +8,9 @@
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+  margin-bottom: 15px;
 }
-#people_you_may_know ::-webkit-scrollbar {
+.people_you_may_know ::-webkit-scrollbar {
   display: none; /* Safari and Chrome */
 }
 .recommendation-header {

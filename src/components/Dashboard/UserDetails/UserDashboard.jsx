@@ -7,6 +7,7 @@ import {
   LoggedInUserContext,
   getAllPostOfUser,
   getMutualFollowers,
+  getMutualFollowing,
   getUser,
 } from "../../../API/URL";
 import UserProfile from "./UserProfile";
