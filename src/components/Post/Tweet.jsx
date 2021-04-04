@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import no_profile from "../../images/no_profile.png";
-import { URLContext, LoggedInUserContext } from "../../API/URL";
+import { URLContext, LoggedInUserContext, getUser } from "../../API/URL";
 import Comment from "./Comment";
 import Alert from "@material-ui/lab/Alert";
 import SmsOutlinedIcon from "@material-ui/icons/SmsOutlined";
