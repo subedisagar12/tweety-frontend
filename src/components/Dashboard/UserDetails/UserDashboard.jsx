@@ -19,6 +19,8 @@ const UserDashboard = () => {
   const [userPost, setUserPost] = useState(null);
   const [mutualFollowersID, setMutualFollowersID] = useState(null);
   const [mutualFollowers, setMutualFollowers] = useState(null);
+  const [mutualFollowingID, setMutualFollowingID] = useState(null);
+  const [mutualFollowing, setMutualFollowing] = useState(null);
   const [url] = useContext(URLContext);
   const [loggedUser] = useContext(LoggedInUserContext);
   const getUserInfo = () => {
@@ -81,6 +83,37 @@ const UserDashboard = () => {
     call();
   }, [mutualFollowersID]);
 
+  // Mutual following
+  useEffect(() => {
+    const getFollowing = async () => {
+      let data = await getMutualFollowing(loggedUser._id, params.user_id);
+
+      setMutualFollowingID(data);
+    };
+    if (loggedUser) {
+      getFollowing();
+    }
+  }, [loggedUser, params.user_id]);
+
+  useEffect(() => {
+    const getAUser = async () => {
+      let result = [];
+      for (let i = 0; i < mutualFollowingID.length; i++) {
+        let data = await getUser(mutualFollowingID[i], loggedUser._id);
+        result.push(data);
+      }
+      return result;
+    };
+
+    const call = async () => {
+      if (loggedUser && mutualFollowingID) {
+        let res = await getAUser();
+        setMutualFollowing(res);
+      }
+    };
+    call();
+  }, [mutualFollowingID]);
+
   return (
     <section id="user-dashboard">
       <div className="row">
@@ -95,6 +128,11 @@ const UserDashboard = () => {
           <PeopleYouMayKnow
             header="Mutual Follower"
             recommendedUsers={mutualFollowers}
+          />
+
+          <PeopleYouMayKnow
+            header="You Both follow them"
+            recommendedUsers={mutualFollowing}
           />
         </div>
       </div>

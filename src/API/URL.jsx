@@ -161,3 +161,14 @@ export const getMutualFollowers = async (loggedUserId, userId) => {
 
   return result[0];
 };
+
+export const getMutualFollowing = async (loggedUserId, userId) => {
+  let result = [];
+  await axios({
+    method: "get",
+    url: `${URL}/user/mutualfollowing/${loggedUserId}/${userId}`,
+    headers: { "auth-user-id": loggedUserId },
+  }).then((res) => result.push(res.data.data));
+
+  return result[0];
+};
