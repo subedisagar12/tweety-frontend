@@ -21,6 +21,14 @@ const Navbar = ({ isLoggedIn }) => {
           <ul className="navbar-nav">
             <li className="nav-item">
               {isLoggedIn ? (
+                <Link to="/" className="nav-link">
+                  Home
+                </Link>
+              ) : null}
+            </li>
+
+            <li className="nav-item">
+              {isLoggedIn ? (
                 <a href="" className="nav-link" onClick={() => logout()}>
                   Logout
                 </a>

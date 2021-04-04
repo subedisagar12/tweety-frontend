@@ -3,7 +3,7 @@ import "./Dashboard.css";
 import { LoggedInUserContext, URLContext } from "../../API/URL";
 import Alert from "@material-ui/lab/Alert";
 import axios from "axios";
-import { LogUser } from "../User/LoginUser";
+
 const ProfileEdit = ({ changeDisplay, file, setFile }) => {
   const [loggedUser] = useContext(LoggedInUserContext);
   const [url] = useContext(URLContext);
@@ -56,6 +56,29 @@ const ProfileEdit = ({ changeDisplay, file, setFile }) => {
         })
       )
       .catch((e) => setServerResponse({ ...serverResponse, error: e.message }));
+  };
+
+  const DeleteProfileImage = (e) => {
+    e.preventDefault();
+    let response = window.confirm("Do you want to remove your profile image?");
+    if (response) {
+      axios({
+        method: "post",
+        url: `${url}/user/profileImage/remove`,
+        headers: { "auth-user-id": loggedUser._id },
+      })
+        .then((res) => {
+          setServerResponse({
+            ...serverResponse,
+            data: res.data.data,
+            success: res.data.success,
+            error: res.data.error,
+          });
+        })
+        .catch((e) =>
+          setServerResponse({ ...serverResponse, error: e.message })
+        );
+    }
   };
 
   return (
@@ -116,6 +139,13 @@ const ProfileEdit = ({ changeDisplay, file, setFile }) => {
           onClick={(e) => changeDisplay(e)}
         >
           Cancel
+        </button>
+
+        <button
+          className="btn btn-sm btn-block btn-danger mt-3 mx-1 delete-btn"
+          onClick={(e) => DeleteProfileImage(e)}
+        >
+          Remove Profile Picture
         </button>
       </form>
     </section>

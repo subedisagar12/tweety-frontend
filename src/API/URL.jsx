@@ -36,9 +36,7 @@ export const Follow = async (to_be_followed, loggedUser, setLoggedUser) => {
     method: "post",
     url: `${URL}/user/follow/${to_be_followed}`,
     headers: { "auth-user-id": loggedUser._id },
-  })
-    .then((res) => console.log(res))
-    .catch((e) => console.log(e));
+  }).catch((e) => console.log(e));
 };
 
 export const UnFollow = async (to_be_unfollowed, loggedUser, setLoggedUser) => {
@@ -53,9 +51,7 @@ export const UnFollow = async (to_be_unfollowed, loggedUser, setLoggedUser) => {
     method: "post",
     url: `${URL}/user/unfollow/${to_be_unfollowed}`,
     headers: { "auth-user-id": loggedUser._id },
-  })
-    .then((res) => console.log(res))
-    .catch((e) => console.log(e));
+  }).catch((e) => console.log(e));
 };
 
 export const sortByDate = (arr) => {
