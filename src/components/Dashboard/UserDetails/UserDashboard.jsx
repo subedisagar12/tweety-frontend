@@ -127,12 +127,20 @@ const UserDashboard = () => {
         <div className="col-md-3 user-info">
           {/* Mutual Follower section goes here */}
           <PeopleYouMayKnow
-            header={`Mutual Follower (${mutualFollowers.length})`}
+            header={
+              mutualFollowers
+                ? `Mutual Follower (${mutualFollowers.length})`
+                : "Mutual Followers"
+            }
             recommendedUsers={mutualFollowers}
           />
 
           <PeopleYouMayKnow
-            header={`You Both follow them (${mutualFollowing.length})`}
+            header={
+              mutualFollowing
+                ? `You both follow them (${mutualFollowing.length})`
+                : "You both follow them"
+            }
             recommendedUsers={mutualFollowing}
           />
         </div>
