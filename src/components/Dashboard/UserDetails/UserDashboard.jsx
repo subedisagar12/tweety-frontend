@@ -121,7 +121,7 @@ const UserDashboard = () => {
         <div className="col-md-3 user-profile">
           <UserProfile user={user} />
         </div>
-        <div className="col-md-6 user-posts">
+        <div className="col-md-6 user-posts ">
           <UserPost userPost={userPost} />
         </div>
         <div className="col-md-3 user-info">

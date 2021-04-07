@@ -1,5 +1,5 @@
 #home {
-  margin-top: 5rem;
+  margin-top: 1rem;
   font-size: 14px;
 }
 
@@ -8,7 +8,7 @@
 }
 
 #profile_display {
-  width: 100%;
+  /* width: 100%; */
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -115,4 +115,15 @@ textarea {
   background-color: var(--secondary-color);
   color: white;
   transition: linear 0.2s;
+}
+
+@media only screen and (max-width: 768px) {
+  #home {
+    margin-top: 1rem;
+    padding: 0px 10px;
+  }
+
+  .tweets {
+    margin-top: 2rem;
+  }
 }

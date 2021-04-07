@@ -69,7 +69,7 @@ const LoginUser = () => {
     <section className="user_section">
       <div className="form-area">
         <div className="form-header">
-          <h4 className="form-heading">Tweety Login</h4>
+          <h5 className="form-heading">Login</h5>
         </div>
         <div className="form-body">
           <form action="">

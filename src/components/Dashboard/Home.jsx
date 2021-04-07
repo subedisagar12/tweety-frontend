@@ -61,16 +61,19 @@ const HomePage = ({ loggedUser }) => {
       .catch((e) => setServerReport({ ...serverReport, error: e.message }));
   };
 
-  useEffect(async () => {
+  useEffect(() => {
     const fetchPost = async () => {
       let res = await GetAllPostsOfFollowedPeople(loggedUser);
 
       return res;
     };
-    let data = await fetchPost();
+    const call = async () => {
+      let data = await fetchPost();
+      setAllTweets(data);
+    };
 
-    setAllTweets(data);
-  }, [serverReport.data]);
+    call();
+  }, []);
 
   useEffect(() => {
     if (serverReport.success !== "") {
@@ -105,10 +108,10 @@ const HomePage = ({ loggedUser }) => {
 
   return (
     <section id="home" className="row">
-      <section className="profile col-md-3">
+      <div className="profile col-md-3">
         <ProfileDisplay loggedUser={loggedUser} />
-      </section>
-      <section className="tweets col-md-6">
+      </div>
+      <div className="tweets col-md-6">
         <Switch>
           <Route path="/" exact>
             <CreateTweet
@@ -131,8 +134,8 @@ const HomePage = ({ loggedUser }) => {
             <Following />
           </Route>
         </Switch>
-      </section>
-      <section className="activities col-md-3">
+      </div>
+      <div className="activities col-md-3">
         <div className="recommendation">
           <PeopleYouMayKnow
             recommendedUsers={allUser}
@@ -140,7 +143,7 @@ const HomePage = ({ loggedUser }) => {
             header="People you may know"
           />
         </div>
-      </section>
+      </div>
     </section>
   );
 };

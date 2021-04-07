@@ -37,7 +37,8 @@
   background: #f1f1f1;
   margin-bottom: 0.2rem;
   margin-right: 5rem;
-  height: 3rem;
+  min-height: 3rem;
+  max-height: auto;
   border-radius: 5px;
   padding: 0px 10px;
   display: flex;

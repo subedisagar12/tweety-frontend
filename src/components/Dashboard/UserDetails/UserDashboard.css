@@ -1,5 +1,5 @@
 #user-dashboard {
-  margin-top: 5rem;
+  margin-top: 1rem;
 }
 
 .user_profile img {
@@ -28,4 +28,13 @@
 
 .root {
   font-size: 14px;
+}
+
+@media only screen and (max-width: 768px) {
+  #user-dashboard {
+    padding: 0px 10px;
+  }
+  .user-profile {
+    margin-bottom: 1rem;
+  }
 }
