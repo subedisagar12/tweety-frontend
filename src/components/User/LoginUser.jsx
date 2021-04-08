@@ -66,59 +66,61 @@ const LoginUser = () => {
     return;
   }, [loggedUser]);
   return (
-    <section className="user_section">
-      <div className="form-area">
-        <div className="form-header">
-          <h5 className="form-heading">Login</h5>
-        </div>
-        <div className="form-body">
-          <form action="">
-            {serverResults.error !== "" ? (
-              <Alert severity="error">{serverResults.error}</Alert>
-            ) : null}
-            {/* Email input */}
-            <div className="form-group mt-2">
-              <label htmlFor="email">Email Address</label>
-              <input
-                type="email"
-                className="form-control"
-                id="email"
-                name="email"
-                value={credentials.email}
-                onChange={(e) => BindData(e)}
-              />
-            </div>
+    <section className="landing_page">
+      <section className="user_section">
+        <div className="form-area">
+          <div className="form-header">
+            <h5 className="form-heading">Login</h5>
+          </div>
+          <div className="form-body">
+            <form action="">
+              {serverResults.error !== "" ? (
+                <Alert severity="error">{serverResults.error}</Alert>
+              ) : null}
+              {/* Email input */}
+              <div className="form-group mt-2">
+                <label htmlFor="email">Email Address</label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="email"
+                  name="email"
+                  value={credentials.email}
+                  onChange={(e) => BindData(e)}
+                />
+              </div>
 
-            {/* Password Input */}
-            <div className="form-group">
-              <label htmlFor="password">Enter Password</label>
-              <input
-                type="password"
-                className="form-control"
-                id="password"
-                name="password"
-                value={credentials.password}
-                onChange={(e) => BindData(e)}
-              />
-            </div>
+              {/* Password Input */}
+              <div className="form-group">
+                <label htmlFor="password">Enter Password</label>
+                <input
+                  type="password"
+                  className="form-control"
+                  id="password"
+                  name="password"
+                  value={credentials.password}
+                  onChange={(e) => BindData(e)}
+                />
+              </div>
 
-            <div className="submit-button">
-              {loading ? (
-                <CircularProgress></CircularProgress>
-              ) : (
-                <button className="btn btn-sm" onClick={(e) => LoginUser(e)}>
-                  Login
-                </button>
-              )}
-            </div>
-            <Link to="/user/register">
-              <p className="link text-center mt-1">
-                New to Tweety? Register for free!!
-              </p>
-            </Link>
-          </form>
+              <div className="submit-button">
+                {loading ? (
+                  <CircularProgress></CircularProgress>
+                ) : (
+                  <button className="btn btn-sm" onClick={(e) => LoginUser(e)}>
+                    Login
+                  </button>
+                )}
+              </div>
+              <Link to="/user/register">
+                <p className="link text-center mt-1">
+                  New to Tweety? Register for free!!
+                </p>
+              </Link>
+            </form>
+          </div>
         </div>
-      </div>
+      </section>
     </section>
   );
 };

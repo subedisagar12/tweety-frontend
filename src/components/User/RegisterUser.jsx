@@ -57,117 +57,122 @@ const RegisterUser = () => {
   };
 
   return (
-    <section className="user_registration_section">
-      <div className="form-area">
-        <div className="form-header">
-          <h4 className="form-heading">Tweety Registration</h4>
-        </div>
-        <div className="form-body">
-          <form action="" encType="multipart/form-data">
-            {serverResults.error !== "" ? (
-              <Alert severity="error">{serverResults.error}</Alert>
-            ) : null}
-            {serverResults.success !== "" ? (
-              <Alert severity="success">{serverResults.success}</Alert>
-            ) : null}
-            <div className="form-group mt-2">
-              <label htmlFor="name">Full Name</label>
-              <input
-                type="text"
-                className="form-control"
-                id="name"
-                name="name"
-                value={userInfo.name}
-                onChange={(e) => BindInput(e)}
-              />
-            </div>
-            {/* Email input */}
-            <div className="form-group">
-              <label htmlFor="email">Email Address</label>
-              <input
-                type="email"
-                className="form-control"
-                id="email"
-                name="email"
-                value={userInfo.email}
-                onChange={(e) => BindInput(e)}
-              />
-            </div>
-
-            {/* Password Input */}
-            <div className="form-group">
-              <label htmlFor="password">Choose a password</label>
-              <input
-                type="password"
-                className="form-control"
-                id="password"
-                name="password"
-                value={userInfo.password}
-                onChange={(e) => BindInput(e)}
-              />
-            </div>
-
-            {/* Re Enter password */}
-            <div className="form-group">
-              <label htmlFor="re_password">Re-Enter Password</label>
-              <input
-                type="password"
-                className="form-control"
-                id="re_password"
-                name="re_password"
-                value={userInfo.re_password}
-                onChange={(e) => BindInput(e)}
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="Gender">Gender: </label>
-              <div className="form-check">
+    <section className="landing_page">
+      <section className="user_registration_section">
+        <div className="form-area">
+          <div className="form-header">
+            <h4 className="form-heading">Tweety Registration</h4>
+          </div>
+          <div className="form-body">
+            <form action="" encType="multipart/form-data">
+              {serverResults.error !== "" ? (
+                <Alert severity="error">{serverResults.error}</Alert>
+              ) : null}
+              {serverResults.success !== "" ? (
+                <Alert severity="success">{serverResults.success}</Alert>
+              ) : null}
+              <div className="form-group mt-2">
+                <label htmlFor="name">Full Name</label>
                 <input
-                  type="radio"
-                  className="form-check-input"
-                  id="male"
-                  name="gender"
-                  value="male"
-                  onChange={(e) => BindInput(e)}
-                  defaultChecked
-                />
-                <label htmlFor="male" className="form-check-label">
-                  Male
-                </label>
-              </div>
-
-              <div className="form-check">
-                <input
-                  type="radio"
-                  className="form-check-input"
-                  id="female"
-                  name="gender"
-                  value="female"
+                  type="text"
+                  className="form-control"
+                  id="name"
+                  name="name"
+                  value={userInfo.name}
                   onChange={(e) => BindInput(e)}
                 />
-                <label htmlFor="female" className="form-check-label">
-                  Female
-                </label>
               </div>
-            </div>
-            {serverResults.error !== "" ? (
-              <Alert severity="error">{serverResults.error}</Alert>
-            ) : null}
-            {serverResults.success !== "" ? (
-              <Alert severity="success">{serverResults.success}</Alert>
-            ) : null}
-            <div className="submit-button mt-2">
-              <button className="btn btn-sm " onClick={(e) => RegisterUser(e)}>
-                Register me
-              </button>
-            </div>
-          </form>
+              {/* Email input */}
+              <div className="form-group">
+                <label htmlFor="email">Email Address</label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="email"
+                  name="email"
+                  value={userInfo.email}
+                  onChange={(e) => BindInput(e)}
+                />
+              </div>
+
+              {/* Password Input */}
+              <div className="form-group">
+                <label htmlFor="password">Choose a password</label>
+                <input
+                  type="password"
+                  className="form-control"
+                  id="password"
+                  name="password"
+                  value={userInfo.password}
+                  onChange={(e) => BindInput(e)}
+                />
+              </div>
+
+              {/* Re Enter password */}
+              <div className="form-group">
+                <label htmlFor="re_password">Re-Enter Password</label>
+                <input
+                  type="password"
+                  className="form-control"
+                  id="re_password"
+                  name="re_password"
+                  value={userInfo.re_password}
+                  onChange={(e) => BindInput(e)}
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="Gender">Gender: </label>
+                <div className="form-check">
+                  <input
+                    type="radio"
+                    className="form-check-input"
+                    id="male"
+                    name="gender"
+                    value="male"
+                    onChange={(e) => BindInput(e)}
+                    defaultChecked
+                  />
+                  <label htmlFor="male" className="form-check-label">
+                    Male
+                  </label>
+                </div>
+
+                <div className="form-check">
+                  <input
+                    type="radio"
+                    className="form-check-input"
+                    id="female"
+                    name="gender"
+                    value="female"
+                    onChange={(e) => BindInput(e)}
+                  />
+                  <label htmlFor="female" className="form-check-label">
+                    Female
+                  </label>
+                </div>
+              </div>
+              {serverResults.error !== "" ? (
+                <Alert severity="error">{serverResults.error}</Alert>
+              ) : null}
+              {serverResults.success !== "" ? (
+                <Alert severity="success">{serverResults.success}</Alert>
+              ) : null}
+              <div className="submit-button mt-2">
+                <button
+                  className="btn btn-sm "
+                  onClick={(e) => RegisterUser(e)}
+                >
+                  Register me
+                </button>
+              </div>
+            </form>
+          </div>
+          <Link to="/">
+            <p className="link text-center mb-2">I already have an account</p>
+          </Link>
         </div>
-        <Link to="/">
-          <p className="link text-center mb-2">I already have an account</p>
-        </Link>
-      </div>
+      </section>
     </section>
   );
 };
