@@ -10,7 +10,7 @@ import {
   Followers,
   Following,
 } from "../ComponentsImport";
-import { URLContext, GetAllPostsOfFollowedPeople } from "../../API/URL";
+import { URLContext } from "../../API/URL";
 const HomePage = ({ loggedUser }) => {
   const [allUser, setAllUser] = useState(null);
 
@@ -26,6 +26,17 @@ const HomePage = ({ loggedUser }) => {
     success: "",
   });
 
+  const GetAllPostsOfFollowedPeople = async () => {
+    axios({
+      method: "get",
+      url: `${url}/post/allPost/${loggedUser._id}`,
+      headers: { "auth-user-id": loggedUser._id },
+    }).then((res) => setAllTweets(res.data.data));
+  };
+
+  useEffect(() => {
+    GetAllPostsOfFollowedPeople();
+  }, [serverReport]);
   const wordCounter = () => {
     setWords(tweet.length);
   };
@@ -61,19 +72,20 @@ const HomePage = ({ loggedUser }) => {
       .catch((e) => setServerReport({ ...serverReport, error: e.message }));
   };
 
-  useEffect(() => {
-    const fetchPost = async () => {
-      let res = await GetAllPostsOfFollowedPeople(loggedUser);
+  // console.log(serverReport);
+  // useEffect(() => {
+  //   const fetchPost = async () => {
+  //     let res = await GetAllPostsOfFollowedPeople(loggedUser);
 
-      return res;
-    };
-    const call = async () => {
-      let data = await fetchPost();
-      setAllTweets(data);
-    };
+  //     return res;
+  //   };
+  //   const call = async () => {
+  //     let data = await fetchPost();
+  //     setAllTweets(data);
+  //   };
 
-    call();
-  }, []);
+  //   call();
+  // }, []);
 
   useEffect(() => {
     if (serverReport.success !== "") {

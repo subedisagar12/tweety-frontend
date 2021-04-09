@@ -13,7 +13,7 @@ const Tweet = ({ data }) => {
   const [loggedUser] = useContext(LoggedInUserContext);
   const [author, setAuthor] = useState(initialState);
   const [isLiked, setIsLiked] = useState(false);
-  const [likes, setLikes] = useState(data.likes.length);
+  const [likes, setLikes] = useState(0);
   const [url] = useContext(URLContext);
   const [comment, setComment] = useState("");
   const [allComments, setAllComments] = useState([]);
@@ -30,6 +30,10 @@ const Tweet = ({ data }) => {
   const onClickToDisplayOption = () => {
     setDisplayEditOptions(!displayEditOptions);
   };
+
+  useEffect(() => {
+    setLikes(data.likes.length);
+  }, [data]);
 
   const Like = () => {
     setLikes(likes + 1);
@@ -119,7 +123,7 @@ const Tweet = ({ data }) => {
     if (data.likes.includes(loggedUser._id)) {
       setIsLiked(true);
     }
-  }, []);
+  }, [data]);
   useEffect(() => {
     axios({
       method: "get",
@@ -139,7 +143,7 @@ const Tweet = ({ data }) => {
         .catch((e) => console.log(e));
     };
     fetchComments();
-  }, []);
+  }, [data]);
 
   const imageUrl = url + "/" + author.profileImage;
 
@@ -156,6 +160,7 @@ const Tweet = ({ data }) => {
     let unit = hour >= 12 ? "PM" : "AM";
     return hour + ":" + newdate.getMinutes() + " " + unit;
   };
+
   return (
     <>
       {serverResponse.error !== "" ? (
@@ -223,12 +228,12 @@ const Tweet = ({ data }) => {
               {isLiked ? (
                 <span
                   className="material-icons favorite"
-                  onClick={(e) => Unlike()}
+                  onClick={() => Unlike()}
                 >
                   favorite
                 </span>
               ) : (
-                <span className="material-icons" onClick={(e) => Like()}>
+                <span className="material-icons" onClick={() => Like()}>
                   favorite_border
                 </span>
               )}
